@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+
+<!--
+Project name(项目名称)：HTML5_geographical_position_API
+  File name(文件名): test5
+  Authors(作者）: mao
+  Author QQ：1296193245
+  GitHub：https://github.com/maomao124/
+  Date(创建日期)： 2022/4/12
+  Time(创建时间)： 17:37
+  Description(描述)： 无
+-->
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body onload="getLocation()">
+<div id="detail">
+    坐标
+</div>
+<script>
+
+    var detail = document.getElementById("detail");
+
+    function getLocation()
+    {
+        if (navigator.geolocation)
+        {
+            navigator.geolocation.getCurrentPosition(showPosition, showError, options);
+        }
+        else
+        {
+            detail.innerHTML = "浏览器不支持定位";
+        }
+    }
+
+    function showPosition(position)
+    {
+        var content = "定位信息如下：<br />";
+        content += "纬度: " + position.coords.latitude + "°<br />";
+        content += "经度: " + position.coords.longitude + "°<br />";
+        content += "位置精确度: " + position.coords.accuracy + "<br />";
+        content += "海拔: " + position.coords.altitude + " 米<br />";
+        content += "方向: " + position.coords.heading + "°<br />";
+        content += "速度: " + position.coords.speed + " m/s";
+
+        detail.innerHTML = content;
+    }
+
+    function showError(error)
+    {
+        if (error.code === error.PERMISSION_DENIED)
+        {
+            detail.innerHTML = "用户拒绝了地理定位的请求"
+        }
+        else if (error.code === error.POSITION_UNAVAILABLE)
+        {
+            detail.innerHTML = "位置信息不可用"
+        }
+        else if (error.code === error.TIMEOUT)
+        {
+            detail.innerHTML = "请求超时"
+        }
+        else if (error.code === error.UNKNOWN_ERR)
+        {
+            detail.innerHTML = "未知错误"
+        }
+    }
+
+    var options =
+        {
+            //启用高精度
+            enableHighAccuracy: true,
+            timeout: 5000,
+            maximunAge: 20000
+        };
+</script>
+</body>
+</html>

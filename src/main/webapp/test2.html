@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+
+<!--
+Project name(项目名称)：HTML5_geographical_position_API
+  File name(文件名): test2
+  Authors(作者）: mao
+  Author QQ：1296193245
+  GitHub：https://github.com/maomao124/
+  Date(创建日期)： 2022/4/12
+  Time(创建时间)： 17:10
+  Description(描述)： 无
+-->
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body onload="getLocation()">
+
+<div id="location1">
+
+</div>
+
+
+<script>
+    var location1 = document.getElementById('location1')
+
+    function getLocation()
+    {
+        if (navigator.geolocation)
+        {
+            navigator.geolocation.getCurrentPosition(showLocation)
+        }
+        else
+        {
+            location1.innerHTML = "浏览器不支持定位"
+        }
+    }
+
+    function showLocation(p)
+    {
+        location1.innerHTML = "纬度：" + p.coords.latitude + "<br>" + "经度：" + p.coords.longitude;
+    }
+</script>
+</body>
+</html>
