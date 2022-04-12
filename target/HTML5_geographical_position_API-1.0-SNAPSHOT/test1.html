@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+<!--
+Project name(项目名称)：HTML5_geographical_position_API
+  File name(文件名): test1
+  Authors(作者）: mao
+  Author QQ：1296193245
+  GitHub：https://github.com/maomao124/
+  Date(创建日期)： 2022/4/12
+  Time(创建时间)： 17:08
+  Description(描述)： 无
+-->
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="support"></div>
+<script>
+    function test()
+    {
+        //Navigator.geolocation只读属性返回一个Geolocation对象，
+        // 该对象使 Web 内容可以访问设备的位置。这允许网站或应用程序根据用户的位置提供定制的结果。
+        // 注意：出于安全原因，当网页尝试访问位置信息时，
+        // 会通知用户并要求其授予权限。请注意，每个浏览器都有自己的策略和方法来请求此权限
+        if (navigator.geolocation)
+        {
+            document.getElementById("support").innerHTML = "浏览器支持HTML5地理定位";
+        }
+        else
+        {
+            document.getElementById("support").innerHTML = "浏览器不支持HTML5地理定位";
+        }
+    }
+
+    test();
+</script>
+</body>
+</html>
